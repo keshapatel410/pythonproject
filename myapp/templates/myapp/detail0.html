@@ -1,0 +1,42 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>eBook App</title>#}
+{#</head>#}
+{#<body>#}
+{#{% if booklist %}#}
+{#        <h2></h2>Title</h2>#}
+{#        <h2>Price</h2>#}
+{#        <h2>Publisher</h2>#}
+{#      </tr>#}
+{# {% for book in booklist %}#}
+{#        <h2>{{ booklist.title }}</h2>#}
+{#        <h2>{{ booklist.price }}</h2>#}
+{#        <h2>{{ booklist.publisher.name }}</h2>#}
+{# {% endfor %}#}
+{#{% endif %}#}
+{#<!-- <p>#}
+{#  <a href="/myapp19/index/">Go to Index Page</a>#}
+{#</p> -->#}
+{#    <a href="{% url 'myapp:index' %}">index</a>#}
+{#</body>#}
+{#</html>#}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+<h3>{{book.title}}</h3>
+<h4>{{book.publisher.name}}</h4>
+<h4>${{book.price}}</h4>
+
+<a href="{% url 'myapp:index' %}">Back to index</a>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eBook App</title>
+</head>
+<body>
+
+    {% if object_list %}
+        <h2>List of Books</h2>
+        <ol>
+            {% for book  in object_list %}
+                <li>
+                    <a href="{% url 'myapp:details' book.id %}">
+                        {{book.title}}
+                    </a>
+                </li>
+            {% endfor %}
+        </ol>
+
+    {% else %}
+        <strong>There are no available books!</strong>
+    {% endif %}
+<img src="{{request.user.member.image.url}}" width="200">
+{#<br />#}
+{#<a href="about">Hardcoded Link for About</a>#}
+{#<br />#}
+{#    <a href="{%  url 'myapp:about' %}">About page</a>#}
+</body>
+
+</html>

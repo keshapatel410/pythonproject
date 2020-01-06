@@ -1,0 +1,11 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}
+    Sent!
+{% endblock %}
+<h1>RESENT EMAIL HAS BEEN SEND</h1>
+{% block body_block %}
+    <h1>RESET EMAIL HAS BEEN SEND</h1>
+<a href="{% url 'myapp:user_login' %}">Back Namespacing</a>
+
+{% endblock %}

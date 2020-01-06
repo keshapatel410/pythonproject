@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}" />
+<title>eBook APP - {% block title %}Welcome!{% endblock %}</title>
+</head>
+
+<body>
+<div>
+<h1>{% block myhdg %}Hello
+    {% if request.user.is_authenticated %}
+        {{ request.user.username}}
+        {% else %}
+    User !
+    {% endif %}
+ {% endblock %}</h1>
+            {% block body_block%}*** {% endblock %}
+</div>
+{% if request.user.is_authenticated %}
+        <hr />
+            {% if request.session.last_login %}
+                Your last login was {{ request.session.last_login }}
+            {% else %}
+                Your last login was more than one hour ago
+            {% endif %}
+        {% endif %}
+        <hr/>
+<hr>
+    {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'myapp:user_logout' %}">Logout</a>
+      </li>
+    {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'myapp:user_login' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'myapp:user_register' %}">Register</a>
+      </li>
+    {% endif %}
+<div>
+<ul>
+<li class="hbar1"><a href="/myapp/about">Find out about this site</a></li>
+<li class="hbar1"><a href = "{% url 'myapp:index' %}">Click here to return to main page</a></li>
+    <li class="hbar1"><a href="{%  url 'myapp:place_order' %}">Place order</a></li>
+    <li class="hbar1"><a href = "{% url 'myapp:findbooks' %}">Click here to find the books</a></li>
+</ul>
+</div>
+</body>
+</html>
